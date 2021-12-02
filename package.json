@@ -1,0 +1,32 @@
+{
+  "name": "discord-shame-golf-bot",
+  "version": "0.0.1",
+  "description": "Discord Bot for shame golf",
+  "main": "src/Bot.ts",
+  "scripts": {
+    "start": "ts-node src/Bot.ts",
+    "deploy:commands": "ts-node src/deploy-commands.ts"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "shame",
+    "golf"
+  ],
+  "author": "Frank Urbainsky",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "node-cron": "^3.0.0",
+    "sqlite-ts": "^0.1.0",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "@types/node": "^16.11.11",
+    "@types/node-cron": "^3.0.0",
+    "@types/sqlite3": "^3.1.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
+}
