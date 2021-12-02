@@ -57,7 +57,6 @@ export const getUserScore = async (id: string): Promise<number> => {
     const highscore = await db.tables.Highscore.single(c => c.score).where(c =>
         c.equals({ id })
       )
-      console.log(highscore)
     if ( highscore ) return highscore.score
     else return 0
 }

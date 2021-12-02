@@ -35,6 +35,7 @@ export default (client: Client): void => {
 };
 
 const fillString = (name : string, size : number) => {
+
     while (name.length < size  ){
         name += " "
     }
@@ -61,8 +62,8 @@ export const formatHighscores = async () =>{
     reply += separator
     highscores.forEach( line => {
         reply += `|${fillString(line.name, nameLength)}|${fillScore(line.score, scoreLength)}|\n`
-        reply += separator
     })
+    reply += separator
     reply += "```"
     return reply
 }
