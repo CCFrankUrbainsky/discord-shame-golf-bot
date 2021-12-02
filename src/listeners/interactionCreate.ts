@@ -35,7 +35,6 @@ export default (client: Client): void => {
 };
 
 const fillString = (name : string, size : number) => {
-    name = name
     while (name.length < size  ){
         name += " "
     }

@@ -1,6 +1,6 @@
 import * as Sqlite3 from 'sqlite3'
 import { Column, Db, Primary, SQLite3Driver } from 'sqlite-ts'
-const dbFile = '../../scores.db'
+const dbFile = 'scores.db'
 
 class Highscore {
     @Primary('NVARCHAR')
@@ -57,6 +57,7 @@ export const getUserScore = async (id: string): Promise<number> => {
     const highscore = await db.tables.Highscore.single(c => c.score).where(c =>
         c.equals({ id })
       )
+      console.log(highscore)
     if ( highscore ) return highscore.score
     else return 0
 }
