@@ -10,8 +10,6 @@ export default (client: Client): void => {
             return;
         }
         console.log(`${client.user.username} is online`);
-        const channel = client.channels.cache.get(channelId) as TextChannel
-        channel.send(await formatHighscores())
     });
 
     // post highscores bi-monthly
