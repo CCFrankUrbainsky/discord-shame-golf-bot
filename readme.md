@@ -10,7 +10,7 @@ There you need to fill in the needed details:
 
 ```
 {
-	"token": "your bot token (from the discord dev portal) goes here",
+    "token": "your bot token (from the discord dev portal) goes here",
     "guildId": "the id of the server the bot shall operate on goes here",
     "clientId": "the application id (from the discord dev portal) goes here",
     "channelId": "the id of the channel the bot shall post the highscore tables in goes here"
