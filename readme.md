@@ -8,12 +8,14 @@ To get it to run you need to create a 'config.json' file in the root of the appl
 You can copy the config.json.example file for a template.
 There you need to fill in the needed details:
 
+```
 {
 	"token": "your bot token (from the discord dev portal) goes here",
     "guildId": "the id of the server the bot shall operate on goes here",
     "clientId": "the application id (from the discord dev portal) goes here",
     "channelId": "the id of the channel the bot shall post the highscore tables in goes here"
 }
+```
 
 To get the ids of server and channel. Go into your discord user settings and activate developer mode under the advanced tab.
 Then you can right click the server and channel to get the ids.
@@ -43,11 +45,13 @@ For permanent running I advise you to wrap the execution of the code into pm2 or
 
 The bot has the following commands:
 
+```
 /golf  :  Teaches you about the basic features of the bot.
 /golf plus [number] : increases the score of the user that typed the command by [number].
 /golf minus [number] : dencreases the score of the user that typed the command by [number].
 /golf score : Displays the score of the user that typed the command for all to read.
 /golf highscore : Prints a highscore table into the channel.
+```
 
 The bot will post the highscore table on its own every first and 15th of each month.
 Also the table will be reset every season. Meaning the 15th of March, June, September and December.
