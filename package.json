@@ -1,6 +1,6 @@
 {
   "name": "discord-shame-golf-bot",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Discord Bot for shame golf",
   "main": "src/Bot.ts",
   "scripts": {

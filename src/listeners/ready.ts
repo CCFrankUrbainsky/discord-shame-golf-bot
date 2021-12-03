@@ -12,25 +12,25 @@ export default (client: Client): void => {
         console.log(`${client.user.username} is online`);
     });
 
-    let postSchedule = true
+    let postHighscoreTable = true
 
     // post highscores bi-monthly
     cron.schedule("3 0 1,15 * *",  async ()=>{
-        if ( !postSchedule ) { // stops doubleposting after reset
-            postSchedule = true
+        if ( !postHighscoreTable ) { // stops doubleposting after reset
+            postHighscoreTable = true
             return
         }
         const channel = client.channels.cache.get(channelId) as TextChannel
         channel.send(await formatHighscores())
     })
 
-    // post highscores bi-monthly
+    // posts final highscore at season end and then resets the board
     cron.schedule("0 0 15 3,6,9,12 *",  async ()=>{
         const channel = client.channels.cache.get(channelId) as TextChannel
         channel.send('A new season begins! This seasons')
         channel.send(await formatHighscores())
         await resetHighscores()
         channel.send('All stats have been purged. Rejoice!')
-        postSchedule = false
+        postHighscoreTable = false
     })
 };
