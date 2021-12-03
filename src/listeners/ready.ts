@@ -12,8 +12,14 @@ export default (client: Client): void => {
         console.log(`${client.user.username} is online`);
     });
 
+    let postSchedule = true
+
     // post highscores bi-monthly
-    cron.schedule("0 0 1,15 * *",  async ()=>{
+    cron.schedule("3 0 1,15 * *",  async ()=>{
+        if ( !postSchedule ) { // stops doubleposting after reset
+            postSchedule = true
+            return
+        }
         const channel = client.channels.cache.get(channelId) as TextChannel
         channel.send(await formatHighscores())
     })
@@ -25,5 +31,6 @@ export default (client: Client): void => {
         channel.send(await formatHighscores())
         await resetHighscores()
         channel.send('All stats have been purged. Rejoice!')
+        postSchedule = false
     })
 };
