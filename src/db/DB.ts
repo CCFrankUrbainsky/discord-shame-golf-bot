@@ -61,14 +61,59 @@ export const getUserScore = async (id: string): Promise<number> => {
     else return 0
 }
 
-export const setUserScore = async (id: string, name: string,  increase: number): Promise<number> => {
+export type UserScore = {
+    score: number
+    passedUsers: string[]
+    place: number
+    oldPlace: number
+}
+
+export const setUserScore = async (id: string, name: string,  increase: number): Promise<UserScore> => {
     if ( ! db ){
         db = await initDB()
     }
+
+    
     const oldScore = await getUserScore(id)
     const newScore = oldScore + increase
+
+    const highscoreTable = await db.tables.Highscore.select(rows => rows).orderBy( {score:'ASC'} )
+    
+    const oldPlace = highscoreTable.reduce((red,row,index) => {
+        if (row.score < oldScore) {
+            return red + 1
+        }
+        else return red
+    }, 1)
+
+    const newPlace = highscoreTable.reduce((red,row,index) => {
+        if (row.score < newScore) {
+            return red + 1
+        }
+        else return red
+    }, 1)
+
+    const placeIncrease = oldPlace - newPlace
+
+    const newUserScore : UserScore = {
+        score: newScore,
+        place: newPlace,
+        oldPlace: oldPlace,
+        passedUsers: []
+    }
+
+    if ( placeIncrease > 0 ){
+        newUserScore.passedUsers = highscoreTable.reduce((red,row,index) => {
+            if (row.score < oldScore && row.score > newScore ) {
+                red.push(row.name)
+                return red
+            }
+            else return red
+        }, [] as UserScore['passedUsers'])
+    }
+
     await db.tables.Highscore.upsert( {id,name,score: newScore})
-    return newScore
+    return newUserScore
 }
 
 export const getHighscores = async() : Promise<Highscore[]> => {
