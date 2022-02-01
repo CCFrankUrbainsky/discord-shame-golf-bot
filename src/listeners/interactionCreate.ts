@@ -11,12 +11,8 @@ export default (client: Client): void => {
                     const scoreUp = await setUserScore(user.id, user.username, increase)
                     let reply = `**${user.username}s golf score is now ${scoreUp.score}.** (+${increase})`
                     if ( scoreUp.place != scoreUp.oldPlace){
-                        reply += `\nThat pushes ${user.username} down by ${scoreUp.place - scoreUp.oldPlace} places to ${makePlace(scoreUp.place)} place` 
+                        reply += `\Now placed ${makePlace(scoreUp.place)} (up by ${scoreUp.place - scoreUp.oldPlace} places).` 
                     }   
-                    if ( scoreUp.passedUsers.length > 0 ){
-                        reply += ' being surpassed by' + passedUserString(scoreUp.passedUsers)
-                    }      
-                    reply += '.'
                     await interaction.reply(reply)
                     break
                 case 'minus':
@@ -24,12 +20,8 @@ export default (client: Client): void => {
                     const scoreDown = await setUserScore(user.id, user.username, decrease)
                     let replyDown = `**${user.username}s golf score is now ${scoreDown.score}.** (${decrease})`
                     if ( scoreDown.place != scoreDown.oldPlace){
-                        replyDown += `\nThat pushes ${user.username} up by ${scoreDown.oldPlace - scoreDown.place + 1} places to ${makePlace(scoreDown.place)} place` 
+                        replyDown += `\Now placed ${makePlace(scoreDown.place)} (up by ${scoreDown.oldPlace - scoreDown.place + 1} places).` 
                     }   
-                    if ( scoreDown.passedUsers.length > 0 ){
-                        replyDown += ' passing' + passedUserString(scoreDown.passedUsers)
-                    }
-                    replyDown += '.'
                     await interaction.reply(replyDown)
                     break
                 case 'score': 

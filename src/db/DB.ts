@@ -63,7 +63,6 @@ export const getUserScore = async (id: string): Promise<number> => {
 
 export type UserScore = {
     score: number
-    passedUsers: string[]
     place: number
     oldPlace: number
 }
@@ -77,50 +76,31 @@ export const setUserScore = async (id: string, name: string,  increase: number):
     const oldScore = await getUserScore(id)
     const newScore = oldScore + increase
 
-    const highscoreTable = await db.tables.Highscore.select().orderBy( {score:'ASC'} )
+    let highscoreTable = await db.tables.Highscore.select().orderBy( {score:'ASC'} )
     
-    const oldPlace = highscoreTable.reduce((red,row,index) => {
-        if (row.score < oldScore) {
-            return red + 1
+    const oldPlace = highscoreTable.reduce((red,row, index) => {
+        if (row.name == id) {
+            return index + 1
         }
         else return red
     }, 1)
 
-    const newPlace = highscoreTable.reduce((red,row,index) => {
-        if (row.score < newScore) {
-            return red + 1
+    await db.tables.Highscore.upsert( {id,name,score: newScore})
+    highscoreTable = await db.tables.Highscore.select().orderBy( {score:'ASC'} )
+
+    const newPlace = highscoreTable.reduce((red,row, index) => {
+        if (row.name == id) {
+            return index + 1
         }
         else return red
     }, 1)
-
-    const placeIncrease = oldPlace - newPlace
 
     const newUserScore : UserScore = {
         score: newScore,
         place: newPlace,
         oldPlace: oldPlace,
-        passedUsers: []
     }
-
-    if ( placeIncrease > 0 ){
-        newUserScore.passedUsers = highscoreTable.reduce((red,row,index) => {
-            if (row.score < oldScore && row.score > newScore ) {
-                red.push(row.name)
-                return red
-            }
-            else return red
-        }, [] as UserScore['passedUsers'])
-    } else if ( placeIncrease < 0 ){
-        newUserScore.passedUsers = highscoreTable.reduce((red,row,index) => {
-            if (row.score > oldScore && row.score < newScore ) {
-                red.push(row.name)
-                return red
-            }
-            else return red
-        }, [] as UserScore['passedUsers'])
-    }
-
-    await db.tables.Highscore.upsert( {id,name,score: newScore})
+    
     return newUserScore
 }
 
