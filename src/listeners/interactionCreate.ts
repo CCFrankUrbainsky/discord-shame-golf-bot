@@ -14,7 +14,7 @@ export default (client: Client): void => {
                         reply += `\nThat pushes ${user.username} down by ${scoreUp.place - scoreUp.oldPlace} places to ${makePlace(scoreUp.place)} place` 
                     }   
                     if ( scoreUp.passedUsers.length > 0 ){
-                        reply += ' beeing surpassed by' + passedUserString(scoreUp.passedUsers)
+                        reply += ' being surpassed by' + passedUserString(scoreUp.passedUsers)
                     }      
                     reply += '.'
                     await interaction.reply(reply)
