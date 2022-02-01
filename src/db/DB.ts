@@ -79,7 +79,7 @@ export const setUserScore = async (id: string, name: string,  increase: number):
     let highscoreTable = await db.tables.Highscore.select().orderBy( {score:'ASC'} )
     
     const oldPlace = highscoreTable.reduce((red,row, index) => {
-        if (row.name == id) {
+        if (row.name == name) {
             return index + 1
         }
         else return red
@@ -89,19 +89,17 @@ export const setUserScore = async (id: string, name: string,  increase: number):
     highscoreTable = await db.tables.Highscore.select().orderBy( {score:'ASC'} )
 
     const newPlace = highscoreTable.reduce((red,row, index) => {
-        if (row.name == id) {
+        if (row.name == name) {
             return index + 1
         }
         else return red
     }, 1)
 
-    const newUserScore : UserScore = {
+    return {
         score: newScore,
         place: newPlace,
         oldPlace: oldPlace,
     }
-    
-    return newUserScore
 }
 
 export const getHighscores = async() : Promise<Highscore[]> => {
