@@ -11,7 +11,7 @@ export default (client: Client): void => {
                     const scoreUp = await setUserScore(user.id, user.username, increase)
                     let reply = `**${user.username}s golf score is now ${scoreUp.score}.** (+${increase})`
                     if ( scoreUp.place != scoreUp.oldPlace){
-                        reply += `\Now placed ${makePlace(scoreUp.place)} (up by ${scoreUp.place - scoreUp.oldPlace} places).` 
+                        reply += `\nNow placed ${makePlace(scoreUp.place)} (down by ${scoreUp.place - scoreUp.oldPlace} places).` 
                     }   
                     await interaction.reply(reply)
                     break
@@ -20,7 +20,7 @@ export default (client: Client): void => {
                     const scoreDown = await setUserScore(user.id, user.username, decrease)
                     let replyDown = `**${user.username}s golf score is now ${scoreDown.score}.** (${decrease})`
                     if ( scoreDown.place != scoreDown.oldPlace){
-                        replyDown += `\Now placed ${makePlace(scoreDown.place)} (up by ${scoreDown.oldPlace - scoreDown.place + 1} places).` 
+                        replyDown += `\nNow placed ${makePlace(scoreDown.place)} (up by ${scoreDown.oldPlace - scoreDown.place + 1} places).` 
                     }   
                     await interaction.reply(replyDown)
                     break
