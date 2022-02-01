@@ -14,7 +14,7 @@ export default (client: Client): void => {
                         reply += `\nThat pushes ${user.username} down by ${scoreUp.place - scoreUp.oldPlace} places to ${makePlace(scoreUp.place)} place` 
                     }   
                     if ( scoreUp.passedUsers.length > 0 ){
-                        reply += ' passing' + passedUserString(scoreUp.passedUsers)
+                        reply += ' beeing surpassed by' + passedUserString(scoreUp.passedUsers)
                     }      
                     reply += '.'
                     await interaction.reply(reply)
@@ -22,9 +22,9 @@ export default (client: Client): void => {
                 case 'minus':
                     const decrease = ( interaction.options.getInteger('value') || 0 ) * -1 
                     const scoreDown = await setUserScore(user.id, user.username, decrease)
-                    let replyDown = `**${user.username}s golf score is now ${scoreDown.score}.** (+${decrease})`
+                    let replyDown = `**${user.username}s golf score is now ${scoreDown.score}.** (${decrease})`
                     if ( scoreDown.place != scoreDown.oldPlace){
-                        replyDown += `\nThat pushes ${user.username} up by ${scoreDown.oldPlace - scoreDown.place} places to ${makePlace(scoreDown.place)} place` 
+                        replyDown += `\nThat pushes ${user.username} up by ${scoreDown.oldPlace - scoreDown.place + 1} places to ${makePlace(scoreDown.place)} place` 
                     }   
                     if ( scoreDown.passedUsers.length > 0 ){
                         replyDown += ' passing' + passedUserString(scoreDown.passedUsers)

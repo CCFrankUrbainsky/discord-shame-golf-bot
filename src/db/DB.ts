@@ -110,6 +110,14 @@ export const setUserScore = async (id: string, name: string,  increase: number):
             }
             else return red
         }, [] as UserScore['passedUsers'])
+    } else if ( placeIncrease < 0 ){
+        newUserScore.passedUsers = highscoreTable.reduce((red,row,index) => {
+            if (row.score > oldScore && row.score < newScore ) {
+                red.push(row.name)
+                return red
+            }
+            else return red
+        }, [] as UserScore['passedUsers'])
     }
 
     await db.tables.Highscore.upsert( {id,name,score: newScore})
