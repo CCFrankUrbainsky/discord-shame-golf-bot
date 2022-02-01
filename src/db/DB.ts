@@ -77,7 +77,7 @@ export const setUserScore = async (id: string, name: string,  increase: number):
     const oldScore = await getUserScore(id)
     const newScore = oldScore + increase
 
-    const highscoreTable = await db.tables.Highscore.select(rows => rows).orderBy( {score:'ASC'} )
+    const highscoreTable = await db.tables.Highscore.select().orderBy( {score:'ASC'} )
     
     const oldPlace = highscoreTable.reduce((red,row,index) => {
         if (row.score < oldScore) {
