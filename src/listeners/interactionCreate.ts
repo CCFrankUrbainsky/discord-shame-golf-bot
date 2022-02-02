@@ -10,18 +10,24 @@ export default (client: Client): void => {
                     const increase = interaction.options.getInteger('value') || 0
                     const scoreUp = await setUserScore(user.id, user.username, increase)
                     let reply = `**${user.username}s golf score is now ${scoreUp.score}.** (+${increase})`
-                    if ( scoreUp.place != scoreUp.oldPlace){
+                    if ( scoreUp.place != scoreUp.oldPlace && scoreUp.oldPlace != -1){
                         reply += `\nNow placed ${makePlace(scoreUp.place)} (down by ${scoreUp.place - scoreUp.oldPlace} places).` 
-                    }   
+                    } else if ( scoreUp.oldPlace == -1 ) {
+                        reply += `\nNow placed ${makePlace(scoreUp.place)} (new on the board).`
+                        reply += `\nWelcome ${user.username} to the competition!`
+                    }
                     await interaction.reply(reply)
                     break
                 case 'minus':
                     const decrease = ( interaction.options.getInteger('value') || 0 ) * -1 
                     const scoreDown = await setUserScore(user.id, user.username, decrease)
                     let replyDown = `**${user.username}s golf score is now ${scoreDown.score}.** (${decrease})`
-                    if ( scoreDown.place != scoreDown.oldPlace){
+                    if ( scoreDown.place != scoreDown.oldPlace && scoreDown.oldPlace != -1){
                         replyDown += `\nNow placed ${makePlace(scoreDown.place)} (up by ${scoreDown.oldPlace - scoreDown.place} places).` 
-                    }   
+                    } else if ( scoreDown.oldPlace == -1 ) {
+                        replyDown += `\nNow placed ${makePlace(scoreDown.place)} (new on the board).`
+                        replyDown += `\nWelcome ${user.username} to the competition!`
+                    }
                     await interaction.reply(replyDown)
                     break
                 case 'score': 

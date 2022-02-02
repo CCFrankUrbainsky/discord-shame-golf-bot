@@ -83,7 +83,7 @@ export const setUserScore = async (id: string, name: string,  increase: number):
             return index + 1
         }
         else return red
-    }, 1)
+    }, -1)
 
     await db.tables.Highscore.upsert( {id,name,score: newScore})
     highscoreTable = await db.tables.Highscore.select().orderBy( {score:'ASC'} )
