@@ -20,8 +20,8 @@ const commands = [
     .addSubcommand((subcommand:any) =>
         subcommand
             .setName('highscores')
-            .setDescription('Displays the highscore table.'))
-			.addBoolOption((option:any) => option.setName('silent').setDescription('Show the table only to yourself').setRequired(false))
+            .setDescription('Displays the highscore table.')
+			.addBoolOption((option:any) => option.setName('silent').setDescription('Show the table only to yourself').setRequired(false)))
 	.addSubcommand((subcommand:any) =>
 			subcommand
 				.setName('score')
