@@ -116,8 +116,8 @@ const rulesText =
  "3D printing files are not scored until they have been printed, so feel free to stockpile those digital sculpts!\n"+
  "As soon as you completely finish a model, score -1 point! If you give/sell a model away, painted or unpainted, score -1 point!\n"+
  "If it's a model that was doubly counted due to release you can score an additional -1 point if it was completed within 30 days of acquisition.\n"+
- "Feel free to ask if there are any seasonal modifiers, such as holiday or grand alliance themes.\n\n"+
- "Seasons go from 15th of December until 15th of March, next from then until 15th of June, from then until 15th of September and finally from then until 15th of December again.\n"+
+ "Feel free to ask if there are any seasonal modifiers, such as holiday or grand alliance themes.\n"+
+ "Seasons go from 15th of December until 15th of March, next from then until 15th of June, from then until 15th of September and finally from then until 15th of December again.\n\n"+
 
  "_What counts as a model?_\n Any miniature that could be considered a singular object, such as a barricade, a figure on a multibase, or an objective token.\n\n"+
  "_What if I take commissions?_\n Score +1 point when the model is given to you, -1 pt when you finish painting it, and -1 pt when you give it back to the person who commissioned you.\n\n"+ 
