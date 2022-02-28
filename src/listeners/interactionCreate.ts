@@ -120,5 +120,5 @@ const rulesText =
 
  "_What counts as a model?_\n Any miniature that could be considered a singular object, such as a barricade, a figure on a multibase, or an objective token.\n\n"+
  "_What if I take commissions?_\n Score +1 point when the model is given to you, -1 pt when you finish painting it, and -1 pt when you give it back to the person who commissioned you.\n\n"+ 
- "_What if I'm gifted a model?_\n If you intend to paint it, add it to your score. If you paint then *do* paint it, you do not get the -1 pt obviously. This also includes board games and kitbashing fodder.\n\n"+
+ "_What if I'm gifted a model?_\n If you intend to paint it, add it to your score. If you then *do* paint it, you do not get the -1 pt obviously. This also includes board games and kitbashing fodder.\n\n"+
  "**Happy golfing!**"
