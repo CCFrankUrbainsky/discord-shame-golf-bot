@@ -38,8 +38,7 @@ export default (client: Client): void => {
                     break
                 case 'score': 
                     const score = await getUserScore(user.id)
-                    const silent = interaction.options.getBoolean('silent') || false 
-                    await interaction.reply({content: `**${user.username}s score is ${score}**`, ephemeral: silent})
+                    await interaction.reply({content: `**${user.username}s score is ${score}**`})
                     break    
                 case 'highscores': 
                     await interaction.reply(await formatHighscores())
@@ -112,13 +111,14 @@ export const formatHighscores = async () =>{
 }
 
 const rulesText = 
- "Points are gained at +1 per model *recieved in the season*, and an additional +1 if the model was bought within 30 days of its release.\n"+ 
+ "**Miniature Golf Rules**"+
+ "Points are gained at +1 per model **recieved in the season**, and an additional +1 if the model was bought within 30 days of its release.\n"+ 
  "3D printing files are not scored until they have been printed, so feel free to stockpile those digital sculpts!\n"+
  "As soon as you completely finish a model, score -1 point! If you give/sell a model away, painted or unpainted, score -1 point!\n"+
- "If it's a model that was double counted due to release, score an additional -1 point if it was completed within 30 days of acquisition.\n"+
+ "If it's a model that was doubly counted due to release you can score an additional -1 point if it was completed within 30 days of acquisition.\n"+
  "Feel free to ask if there are any seasonal modifiers, such as holiday or grand alliance themes.\n\n"+
 
  "_What counts as a model?_ Any miniature that could be considered a singular object, such as a barricade, a figure on a multibase, or an objective token.\n"+
  "_What if I take commissions?_ Score +1 point when the model is given to you, -1 pt when you finish painting it, and -1 pt when you give it back to the person who commissioned you.\n"+ 
  "_What if I'm gifted a model?_ If you intend to paint it, add it to your score. If you paint then *do* paint it, you do not get the -1 pt obviously. This also includes board games and kitbashing fodder.\n"+
- "*Happy golfing!*"
+ "**Happy golfing!**"
