@@ -20,7 +20,7 @@ const commands = [
     .addSubcommand((subcommand:any) =>
         subcommand
             .setName('highscores')
-            .setDescription('Displays the highscore table.')
+            .setDescription('Displays the highscore table.'))
 	.addSubcommand((subcommand:any) =>
 			subcommand
 				.setName('score')
