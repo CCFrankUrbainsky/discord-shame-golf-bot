@@ -21,10 +21,15 @@ const commands = [
         subcommand
             .setName('highscores')
             .setDescription('Displays the highscore table.'))
+			.addBoolOption((option:any) => option.setName('silent').setDescription('Show the table only to yourself').setRequired(false))
 	.addSubcommand((subcommand:any) =>
 			subcommand
 				.setName('score')
-				.setDescription('Displays your score.'))		
+				.setDescription('Displays your score.'))
+	.addSubcommand((subcommand:any) =>
+			subcommand
+				.setName('rules')
+				.setDescription('Displays the rules used in shame golf.'))		
     ]                 
 	.map(command => command.toJSON());
 const rest = new REST({ version: '9' }).setToken(token);
