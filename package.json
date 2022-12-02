@@ -4,7 +4,7 @@
   "description": "Discord Bot for shame golf",
   "main": "src/Bot.ts",
   "scripts": {
-    "start": "ts-node src/Bot.ts",
+    "start": "ts-node app.ts",
     "deploy:commands": "ts-node src/deploy-commands.ts"
   },
   "keywords": [
@@ -16,7 +16,9 @@
   "author": "Frank Urbainsky",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.14",
     "discord.js": "^13.3.1",
+    "express": "^4.18.2",
     "node-cron": "^3.0.0",
     "sqlite-ts": "^0.1.0",
     "sqlite3": "^5.0.2"
