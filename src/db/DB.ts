@@ -1,7 +1,6 @@
 import * as Sqlite3 from "sqlite3";
 import { Column, Db, Primary, SQLite3Driver } from "sqlite-ts";
 import config from "../../config.json";
-const dbFile = "/scores/scores.db";
 
 class Highscore {
   @Primary("NVARCHAR")
@@ -16,7 +15,7 @@ class Highscore {
 
 const entities = { Highscore };
 let sqlite3Db = new Sqlite3.Database(
-  `file:${config.dbFile}?nolock=1`,
+  config.dbFile,
   Sqlite3.OPEN_FULLMUTEX + Sqlite3.OPEN_READWRITE,
   (err: any) => {
     if (err && err.code == "SQLITE_CANTOPEN") {
@@ -30,7 +29,7 @@ let sqlite3Db = new Sqlite3.Database(
 );
 
 function createDatabase() {
-  sqlite3Db = new Sqlite3.Database(dbFile, (err) => {
+  sqlite3Db = new Sqlite3.Database(config.dbFile, (err) => {
     if (err) {
       console.log("Getting error " + err);
       process.exit(1);
