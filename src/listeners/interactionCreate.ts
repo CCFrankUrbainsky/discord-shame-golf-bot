@@ -66,7 +66,7 @@ export default (client: Client): void => {
         default:
           await interaction.reply({
             content:
-              "**Thanks for using Golf Git!** Please use the subcommands:\n/golf plus X  to add to your score\n/golf minus X to substract from your score\n\nGit gud!",
+              "**Thanks for using Golf Git!** Please use the subcommands:\n```/golf plus X```  to add to your score\n```/golf minus X``` to substract from your score\nIf you are unsure how any of this works try ```/golf rules``` for some clarifications.\n\nGit gud!",
             ephemeral: true,
           });
       }
@@ -97,19 +97,6 @@ const makePlace = (score: number) => {
   } else if (score == 3) {
     return "third";
   } else return `${score}th`;
-};
-
-const passedUserString = (passedUsers: string[]) => {
-  let reply = "";
-  passedUsers.forEach((username, index) => {
-    reply += ` ${username}`;
-    if (index == passedUsers.length - 2) {
-      reply += " and";
-    } else if (index < passedUsers.length - 1) {
-      reply += ",";
-    }
-  });
-  return reply;
 };
 
 export const formatHighscores = async () => {
@@ -168,5 +155,5 @@ const rulesText =
   "_What counts as a model?_\n Any miniature that could be considered a singular object, such as a barricade, a figure on a multibase, or an objective token.\n\n" +
   "_What if I take commissions?_\n Score +1 point when the model is given to you, -1 pt when you finish painting it, and -1 pt when you give it back to the person who commissioned you.\n\n" +
   "_What if I'm gifted a model?_\n If you intend to paint it, then count it as you would if you had bought it, and score it when painted. If you don't intend to paint it, don't change your score, painted or not.\n\n" +
-  "New Seasons start the 15th of December, March, June and September\n\n" +
+  "New Seasons start the 1st of January, April, July and October.\n\n" +
   "**Happy golfing!**";
