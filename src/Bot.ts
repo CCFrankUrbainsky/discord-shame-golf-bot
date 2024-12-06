@@ -2,7 +2,7 @@ import { Client, Intents } from "discord.js"
 import interactionCreate from "./listeners/interactionCreate"
 import ready from "./listeners/ready"
 
-const { token } = require('../config.json');
+const { token } = require('../data/config.json');
 
 console.log("Bot is starting...");
 

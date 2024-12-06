@@ -2,9 +2,12 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "commonjs",
-        "rootDir": "./",
+        "rootDir": ".",
         "outDir": "./dist/",
         "strict": true,
+        "types": [
+            "node"
+        ],
         "moduleResolution": "node",
         "importHelpers": true,
         "experimentalDecorators": true,
@@ -24,6 +27,8 @@
         "app.ts"
     ],
     "include": [
+        "./src/**/*.ts",
+        "./src/listeners/interactionCreate.ts",
         "./**/*.ts"
     ],
     "exclude": [

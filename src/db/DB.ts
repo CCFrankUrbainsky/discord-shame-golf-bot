@@ -1,6 +1,6 @@
 import * as Sqlite3 from "sqlite3";
 import { Column, Db, Primary, SQLite3Driver } from "sqlite-ts";
-import config from "../../config.json";
+import config from "../../data/config.json";
 
 class Highscore {
   @Primary("NVARCHAR")

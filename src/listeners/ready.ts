@@ -2,7 +2,7 @@ import { Client, TextChannel } from "discord.js";
 import { formatHighscores } from "./interactionCreate";
 import * as cron from "node-cron";
 import { resetHighscores } from "../db/DB";
-const { channelId } = require("../../config.json");
+const { channelId } = require("../../data/config.json");
 
 export default (client: Client): void => {
   client.on("ready", async () => {

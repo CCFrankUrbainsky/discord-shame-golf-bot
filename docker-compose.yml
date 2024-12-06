@@ -1,0 +1,6 @@
+services:
+  discord-bot:
+    image: frankurbainsky/discord-shame-golf-bot
+    volumes:
+      - ./data:/bot/data
+    # restart: always

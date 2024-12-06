@@ -4,7 +4,7 @@ This is a discord bot based on the awesome guide at https://discordjs.guide.
 
 It needs nodeJS 16+ installed to run.
 
-To get it to run you need to create a 'config.json' file in the root of the application.
+To get it to run you need to create a 'config.json' file in the data of the application.
 You can copy the config.json.example file for a template.
 There you need to fill in the needed details:
 
