@@ -1,7 +1,7 @@
 {
-	"token": "bot-token",
+    "token": "bot-token",
     "guildId": "server-id",
     "clientId": "app-id",
-    "channelId: "channel-id",
+    "channelId": "channel-id",
     "dbFile": "scores.db"
 }
