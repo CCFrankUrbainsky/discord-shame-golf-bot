@@ -16,7 +16,7 @@ class Highscore {
 const entities = { Highscore };
 let sqlite3Db = new Sqlite3.Database(
   config.dbFile,
-  Sqlite3.OPEN_FULLMUTEX + Sqlite3.OPEN_READWRITE,
+  Sqlite3.OPEN_READWRITE,
   (err: any) => {
     if (err && err.code == "SQLITE_CANTOPEN") {
       console.log("error opeing db file.");
@@ -39,8 +39,8 @@ function createDatabase() {
 
 let db:
   | Db<{
-      Highscore: typeof Highscore;
-    }>
+    Highscore: typeof Highscore;
+  }>
   | undefined = undefined;
 
 const initDB = async () =>
